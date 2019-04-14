@@ -41,7 +41,6 @@ function generateOdds(len) {
    throw new Error('Not implemented');
 }
 
-
 /**
  * Returns the doubled array - elements of the specified array are repeated twice using original order
  * 
@@ -289,7 +288,12 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   arr.sort(function(a,b) {
+      if (a < b) { return 1; }
+      else if (a == b) { return 0; }
+      else { return -1; }
+  });
+  return arr.slice(0, 3);
 }
  
  
@@ -307,7 +311,6 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-   console.log(arr.filter(item => item > 0).length);
    return arr.filter(item => typeof item === 'number' &&  item > 0).length;
 }
  
@@ -357,7 +360,7 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   return arr.filter(element => Boolean(element) === false).length;
 }
 
 /**
@@ -441,7 +444,7 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+    return Array.apply(null, new Array(n)).map((x, i, xs) => xs.map((_, k) => i === k ? 1 : 0));
 }
 
 /**
